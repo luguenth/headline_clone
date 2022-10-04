@@ -17,26 +17,55 @@
                 {{/if}}
 
                 {{#if feature_image}}
-                    <figure class="gh-article-image">
-                        <img
-                            srcset="{{img_url feature_image size="s"}} 300w,
-                                    {{img_url feature_image size="m"}} 720w,
-                                    {{img_url feature_image size="l"}} 960w,
-                                    {{img_url feature_image size="xl"}} 1200w,
-                                    {{img_url feature_image size="xxl"}} 2000w"
-                            sizes="(max-width: 1200px) 100vw, 1200px"
-                            src="{{img_url feature_image size="xl"}}"
-                            alt="{{title}}"
-                        >
-                        {{#if feature_image_caption}}
-                            <figcaption>{{feature_image_caption}}</figcaption>
-                        {{/if}}
-                    </figure>
+                    <!-- check if post is tagged with "team" -->
+                    {{#if primary_tag}}
+                        {{#match primary_tag.slug "=" "team"}}
+                            
+                        {{else}}
+                            <figure class="gh-article-image">
+                                <img
+                                    srcset="{{img_url feature_image size="s"}} 300w,
+                                            {{img_url feature_image size="m"}} 720w,
+                                            {{img_url feature_image size="l"}} 960w,
+                                            {{img_url feature_image size="xl"}} 1200w,
+                                            {{img_url feature_image size="xxl"}} 2000w"
+                                    sizes="(max-width: 1200px) 100vw, 1200px"
+                                    src="{{img_url feature_image size="xl"}}"
+                                    alt="{{title}}"
+                                >
+                                {{#if feature_image_caption}}
+                                    <figcaption>{{feature_image_caption}}</figcaption>
+                                {{/if}}
+                            </figure>
+                        {{/match}}
+                    {{/if}}
                 {{/if}}
             </header>
 
             <section class="gh-content gh-canvas">
+                <div class="gh-content-wrapper">
+                    
+                {{#if primary_tag}}
+                        {{#match primary_tag.slug "=" "team"}}
+                            <figure class="gh-article-image gh-image-team">
+                                <img
+                                    srcset="{{img_url feature_image size="s"}} 300w,
+                                            {{img_url feature_image size="m"}} 720w,
+                                            {{img_url feature_image size="l"}} 960w,
+                                            {{img_url feature_image size="xl"}} 1200w,
+                                            {{img_url feature_image size="xxl"}} 2000w"
+                                    sizes="(max-width: 1200px) 100vw, 1200px"
+                                    src="{{img_url feature_image size="xl"}}"
+                                    alt="{{title}}"
+                                >
+                                {{#if feature_image_caption}}
+                                    <figcaption>{{feature_image_caption}}</figcaption>
+                                {{/if}}
+                            </figure>
+                        {{/match}}
+                    {{/if}}
                 {{content}}
+                </div>
             </section>
         </article>
     {{/post}}

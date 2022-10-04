@@ -3,11 +3,34 @@
 <main class="gh-main gh-outer">
     <div class="gh-inner">
         <section class="gh-topic gh-topic-grid">
+
+            <!-- here goes the intro hero -->
+            <div class="gh-topic-content aligned-centered custom-hero">
+
+                        <!-- get all pages tagged with "about" -->
+                        {{#get "pages" filter="tags:about" limit="all"}}
+                            {{#foreach pages}}
+                                    {{#if feature_image}}
+                                        <img class="gh-topic-hero-image" src="{{feature_image}}" alt="{{title}}">
+                                    {{/if}}
+                                    <!-- export raw html -->
+                                    {{#if html}}
+                                    <div class="grid-wrapper">
+                                        {{{html}}}
+                                    </div>
+                                    {{else}}
+                                        {{excerpt words="1000"}}
+                                    {{/if}}
+                            {{/foreach}}
+                        {{/get}}
+            </div>
+
             <h2 class="gh-topic-name">
                 {{#match pagination.pages ">" 1}}
-                    <a href="{{@site.url}}/page/2">Neueste Beiträge</a>
+                    <a href="{{@site.url}}/page/2">{{t "Neueste Beiträge"}}</a>
                 {{else}}
                     Neueste Beiträge
+                    
                 {{/match}}
             </h2>
 
@@ -21,7 +44,7 @@
 
             <footer class="gh-topic-footer">
                 {{#match pagination.pages ">" 1}}
-                    <a class="gh-topic-link" href="{{@site.url}}/page/2">Show more {{> "icons/arrow"}}</a>
+                    <a class="gh-topic-link" href="{{@site.url}}/page/2">Weitere Artikel anzeigen {{> "icons/arrow"}}</a>
                 {{/match}}
             </footer>
         </section>
@@ -29,7 +52,7 @@
         {{#if @custom.enter_tag_slugs_for_primary_sections}}
             {{#get "tags" filter="slug:[{{@custom.enter_tag_slugs_for_primary_sections}}]"}}
                 {{#foreach tags}}
-                    {{> "topic-grid"}}
+                        {{> "topic-grid"}}
                 {{/foreach}}
             {{/get}}
 
@@ -48,15 +71,21 @@
             {{#match posts.length ">" 1}}
                 {{#get "tags" include="count.posts" order="count.posts desc" limit="3"}}
                     {{#foreach tags}}
-                        {{> "topic-grid"}}
+                        {{#match name "!=" "Team"}}
+                            {{> "topic-grid"}}
+                        {{/match}}
                     {{/foreach}}
                 {{/get}}
 
                 {{#get "tags" include="count.posts" order="count.posts desc"}}
                     {{#if tags.[3]}}
+                    
                         <div class="gh-topic-list">
                             {{#foreach tags from="4" limit="3"}}
+                            <!-- if tag matches name about, skip -->
+                            {{#match name "!=" "About"}}
                                 {{> "topic-minimal"}}
+                            {{/match}}
                             {{/foreach}}
                         </div>
                     {{/if}}

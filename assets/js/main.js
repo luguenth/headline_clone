@@ -3,8 +3,8 @@
 })();
 
 (function () {
-    if (!document.body.classList.contains('post-template')) return;
-
+    //if (!document.body.classList.contains('post-template')) return;
+    console.log('post-template');
     const cover = document.querySelector('.gh-cover');
     if (!cover) return;
 
@@ -15,3 +15,9 @@
         cover.classList.remove('loading');
     });
 })();
+
+console.log('post-template');
+
+
+
+

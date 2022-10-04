@@ -1,0 +1,14 @@
+<!-- check if tag name is "team" -->
+<section class="gh-topic gh-topic-grid">
+    <h2 class="gh-topic-name">
+        Team
+    </h2>
+
+    <div class="team">
+        {{#get "pages" filter="tag:team" order="count.posts desc"}}
+            {{#foreach pages}}
+                {{> "loop-grid-team"}}
+            {{/foreach}}
+        {{/get}}
+    </div>
+</section>

@@ -842,4 +842,8 @@ body:not(.home-template) .gh-topic-grid .gh-card {
         margin-top: 0;
         line-height: 1;
     }
+
+    .gh-foot-logo-img{
+        display: unset;
+    }
 }

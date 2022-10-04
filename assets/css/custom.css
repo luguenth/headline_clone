@@ -1,0 +1,154 @@
+.gh-foot-logo img{
+    
+    display: unset;
+    /* make images black and white and invert the colors */
+    /*
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(180deg) brightness(0.8) contrast(0.8);
+    */
+    max-height: 7rem;
+    background-color: white ;
+    padding: 1rem;
+    border-radius: 15px;
+
+}
+
+.gh-foot-logo img:hover{
+    /*
+    filter: invert(100%) sepia(0%) saturate(00%) hue-rotate(0deg) brightness(1) contrast(1);
+    */
+    /* desaturate the image */
+    filter: grayscale(50%);
+    background-color: gainsboro;
+    
+}
+
+.gh-foot-logos a:hover{
+    opacity: 1 !important;
+}
+/* position the logos next to each other and break them if not enough space */
+.gh-foot-logos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.gh-foot-logos > *{
+    margin-right: 2rem;
+}
+
+
+.gh-head-logo img{
+    max-height: 90px;
+    margin: 2rem;
+    
+}
+
+.team {
+    display: grid;
+    gap: 32px 40px;
+    grid-template-columns: 1fr 1fr 1fr !important;
+}
+
+.gh-card-link-team{
+    flex-wrap: wrap;
+    
+}
+
+.gh-card-image-team{
+    width: 100% !important;
+}
+
+.gh-card-image-team img {
+    object-position: top;
+}
+.gh-head-brand {
+    height: 100px;
+}
+
+.gh-head-menu::before{
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    content: "";
+    background-color: var(--color-light-gray);
+}
+
+.gh-head-menu::after {
+    position: absolute;
+    top: 155px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    content: "";
+    background-color: var(--color-light-gray);
+}
+
+.aligned-centered {
+    align-items: center;
+}
+
+.custom-hero {
+    padding: 5rem;
+    margin-bottom: 10rem;
+}
+
+.gh-canvas {
+    display: grid;
+    grid-template-columns: [full-start] minmax(var(--gap),auto) [wide-start] minmax(auto,240px) [main-start] min(1200px,calc(100% - var(--gap)*2)) [main-end] minmax(auto,240px) [wide-end] minmax(var(--gap),auto) [full-end];
+  }
+
+div {
+    text-align: justify;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: left;
+}
+
+.gh-image-team {
+    margin: 2rem;
+    width: 175%;
+}
+
+.gh-content-wrapper {
+    max-width: 100%;
+    display: inline-flex;
+}
+
+.meta img {
+    /* make image inline of text */
+    display: inline;
+    margin-right: 1rem;
+    top: 1rem;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+}
+
+
+/* media query if under 992px */
+@media (max-width: 992px) {
+    .team {
+        grid-template-columns: 1fr !important;
+    }
+    .gh-card-image{
+        max-width: 400px;
+    }
+}
+
+/* media query if under 720 */
+@media screen and (max-width: 720px) {
+    .gh-content-wrapper {
+        max-width: 100%;
+        display: inline-flex;
+        flex-wrap: wrap;
+    }
+
+    
+}
