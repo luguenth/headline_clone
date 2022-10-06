@@ -116,7 +116,8 @@
                 if (matches) {
                     for (var j = 0; j < matches.length; j++) {
                         var match = matches[j];
-                        var split = match.split(":");
+                        //split on : except for http:// or https://
+                        var split = match.split(/:(?![\/]{2})/);
                         var attribute = split[0].replace("[[", "");
                         var value = split[1].replace("]]", "");
                         //remove whitespace
