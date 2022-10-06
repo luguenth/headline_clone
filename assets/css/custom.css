@@ -140,6 +140,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+.gh-card-team {
+    border: 1px solid var(--color-light-gray);
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 2rem;
+}
+
+.gh-card-wrapper {
+    padding: 1rem;
+}
+
 /* media query if under 992px */
 @media (max-width: 992px) {
     .team {
