@@ -43,8 +43,14 @@
             </header>
 
             <section class="gh-content gh-canvas">
-                <div class="gh-content-wrapper">
-                    
+
+
+                {{#if primary_tag}}
+                        {{#match primary_tag.slug "=" "team"}}
+                            <div class="gh-content-wrapper">
+                        {{else}}
+                        {{/match}}
+                {{/if}}
                 {{#if primary_tag}}
                         {{#match primary_tag.slug "=" "team"}}
                             <figure class="gh-article-image gh-image-team">
@@ -65,7 +71,12 @@
                         {{/match}}
                     {{/if}}
                 {{content}}
-                </div>
+                {{#if primary_tag}}
+                        {{#match primary_tag.slug "=" "team"}}
+                            </div>
+                        {{else}}
+                        {{/match}}
+                {{/if}}
             </section>
         </article>
     {{/post}}

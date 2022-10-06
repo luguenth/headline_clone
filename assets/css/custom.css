@@ -60,6 +60,10 @@
     width: 100% !important;
 }
 
+.gh-card-image-team::before{
+    padding-bottom: 100% !important;
+}
+
 .gh-card-image-team img {
     object-position: top;
 }
