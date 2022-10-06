@@ -124,19 +124,21 @@
                         value = value.replace(/^\s+|\s+$/g, '');
                         switch (attribute) {
                             case "Telefon":
-                                console.log("Telefon");
                                 var replacement = 
                                 "<div class='meta'><img src='{{ asset 'images/phone-fill.png' }}' alt=''><span class='meta-value'>" + value + "</span></div>";
                                 text = text.replace(match, replacement);
                                 break;
                             case "Mail":
-                                console.log("E-Mail");
                                 var replacement = 
                                 "<div class='meta'><img src='{{ asset 'images/mail-fill.png' }}' alt=''><span class='meta-value'>" + value + "</span></div>";
                                 text = text.replace(match, replacement);
                                 break;
+                            case "Website":
+                                var replacement = 
+                                "<div class='meta'><img src='{{ asset 'images/pages-fill.png' }}' alt=''><span class='meta-value'><a href='" + value + "'>" + value + "</a></span></div>";
+                                text = text.replace(match, replacement);
+                                break;
                             default:
-                                console.log("default:" + attribute);
                                 break;
 
                         }
