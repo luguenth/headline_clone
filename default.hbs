@@ -126,12 +126,12 @@
                         switch (attribute) {
                             case "Telefon":
                                 var replacement = 
-                                "<div class='meta'><img src='{{ asset 'images/phone-fill.png' }}' alt=''><span class='meta-value'>" + value + "</span></div>";
+                                "<div class='meta'><img src='{{ asset 'images/phone-fill.png' }}' alt=''><span class='meta-value'><a href='tel:" + value + "'>" + value + "</a></span></div>";
                                 text = text.replace(match, replacement);
                                 break;
                             case "Mail":
                                 var replacement = 
-                                "<div class='meta'><img src='{{ asset 'images/mail-fill.png' }}' alt=''><span class='meta-value'>" + value + "</span></div>";
+                                "<div class='meta'><img src='{{ asset 'images/mail-fill.png' }}' alt=''><span class='meta-value'><a href='mailto:" + value + "'>" + value + "</a></span></div>";
                                 text = text.replace(match, replacement);
                                 break;
                             case "Website":
