@@ -100,52 +100,65 @@
     {{/is}}
     <script>
 
+    async function buildDiv(match) {
+        //split on : except for http:// or https://
+        var split = match.split(/:(?![\/]{2})/);
+        var attribute = split[0].replace("[[", "");
+        var value = split[1].replace("]]", "");
+        //remove whitespace
+        attribute = attribute.replace(/^\s+|\s+$/g, '');
+        value = value.replace(/^\s+|\s+$/g, '');
+        var replacement = "";
+        switch (attribute) {
+            case "Telefon":
+                replacement = 
+                "<div class='meta'><img src='{{ asset 'images/phone-fill.png' }}' alt=''><span class='meta-value'><a href='tel:" + value + "'>" + value + "</a></span></div>";
+                break;
+            case "Mail":
+                replacement = 
+                "<div class='meta'><img src='{{ asset 'images/mail-fill.png' }}' alt=''><span class='meta-value'><a href='mailto:" + value + "'>" + value + "</a></span></div>";
+                break;
+            case "Website":
+                replacement = 
+                "<div class='meta'><img src='{{ asset 'images/pages-fill.png' }}' alt=''><span class='meta-value'><a href='" + value + "'>" + value + "</a></span></div>";
+                break;
+            default:
+                break;
+        }
+        return replacement;
+    }
+
+
     window.addEventListener('load', function() {
-        // search for all class="gh-card-excerpt" and save in array
         var excerpt = document.getElementsByClassName("gh-card-excerpt");
-        // append also all elements from class="gh-article-excerpt"
         excerpt = [...excerpt, ...document.getElementsByClassName("gh-article-excerpt")];
-        // if found, parse innerHTML and search for [[ Attribute: Value ]]
-        if (excerpt.length > 0) {
+        excerpt.forEach(element => {
             for (var i = 0; i < excerpt.length; i++) {
-                var text = excerpt[i].innerHTML;
-                var regex = /\[\[([^\]]+)\]\]/g;
-                var matches = text.match(regex);
-                // if found, replace with <span class="gh-card-excerpt-attribute">Attribute</span> <span class="gh-card-excerpt-value">Value</span>
+                var text = element.innerHTML;
+                var matches = text.match(/\[\[.*?\]\]/g);
+                var currentElement = element;
                 if (matches) {
-                    for (var j = 0; j < matches.length; j++) {
-                        var match = matches[j];
-                        //split on : except for http:// or https://
-                        var split = match.split(/:(?![\/]{2})/);
-                        var attribute = split[0].replace("[[", "");
-                        var value = split[1].replace("]]", "");
-                        //remove whitespace
-                        attribute = attribute.replace(/^\s+|\s+$/g, '');
-                        value = value.replace(/^\s+|\s+$/g, '');
-                        var replacement = "";
-                        switch (attribute) {
-                            case "Telefon":
-                                replacement = 
-                                "<div class='meta'><img src='{{ asset 'images/phone-fill.png' }}' alt=''><span class='meta-value'><a href='tel:" + value + "'>" + value + "</a></span></div>";
-                                break;
-                            case "Mail":
-                                replacement = 
-                                "<div class='meta'><img src='{{ asset 'images/mail-fill.png' }}' alt=''><span class='meta-value'><a href='mailto:" + value + "'>" + value + "</a></span></div>";
-                                break;
-                            case "Website":
-                                replacement = 
-                                "<div class='meta'><img src='{{ asset 'images/pages-fill.png' }}' alt=''><span class='meta-value'><a href='" + value + "'>" + value + "</a></span></div>";
-                                break;
-                            default:
-                                break;
-                        }
-                        text = text.replace(match, replacement);
-                    }
-                    excerpt[i].innerHTML = text;
+                    matches.forEach(match => {
+                        buildDiv(match).then(replacement => {
+                            text = text.replace(match, replacement);
+                            currentElement.innerHTML = text;
+                        });
+                    });
                 }
             }
-        }
+        }); 
     });
+
+  
+
+    </script>
+
+    </script>
+
+
+
+
+    
 
 </script>
     <script src="{{asset "built/main.min.js"}}"></script>
