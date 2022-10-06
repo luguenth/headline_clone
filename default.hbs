@@ -100,7 +100,6 @@
     {{/is}}
     <script>
 
-    //wait until the page is loaded
     window.addEventListener('load', function() {
         // search for all class="gh-card-excerpt" and save in array
         var excerpt = document.getElementsByClassName("gh-card-excerpt");
@@ -123,33 +122,31 @@
                         //remove whitespace
                         attribute = attribute.replace(/^\s+|\s+$/g, '');
                         value = value.replace(/^\s+|\s+$/g, '');
+                        var replacement = "";
                         switch (attribute) {
                             case "Telefon":
-                                var replacement = 
+                                replacement = 
                                 "<div class='meta'><img src='{{ asset 'images/phone-fill.png' }}' alt=''><span class='meta-value'><a href='tel:" + value + "'>" + value + "</a></span></div>";
-                                text = text.replace(match, replacement);
                                 break;
                             case "Mail":
-                                var replacement = 
+                                replacement = 
                                 "<div class='meta'><img src='{{ asset 'images/mail-fill.png' }}' alt=''><span class='meta-value'><a href='mailto:" + value + "'>" + value + "</a></span></div>";
-                                text = text.replace(match, replacement);
                                 break;
                             case "Website":
-                                var replacement = 
+                                replacement = 
                                 "<div class='meta'><img src='{{ asset 'images/pages-fill.png' }}' alt=''><span class='meta-value'><a href='" + value + "'>" + value + "</a></span></div>";
-                                text = text.replace(match, replacement);
                                 break;
                             default:
                                 break;
-
                         }
+                        text = text.replace(match, replacement);
                     }
                     excerpt[i].innerHTML = text;
                 }
             }
         }
     });
-    
+
 </script>
     <script src="{{asset "built/main.min.js"}}"></script>
 
