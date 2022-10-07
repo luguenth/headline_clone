@@ -158,6 +158,14 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
 }
 
+.kg-image {
+    max-width: 400px;
+    width: auto;
+    margin: 0 auto;
+    max-height: 100px;
+    height: auto;
+}
+
 /* media query if under 992px */
 @media (max-width: 992px) {
     .team {
