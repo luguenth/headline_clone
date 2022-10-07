@@ -151,6 +151,13 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1rem;
 }
 
+.gh-article-image img {
+    width: 100%;
+    max-width: 800px;
+    /* make centered if to small */
+    margin: 0 auto;
+}
+
 /* media query if under 992px */
 @media (max-width: 992px) {
     .team {
