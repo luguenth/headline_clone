@@ -175,6 +175,26 @@ h1, h2, h3, h4, h5, h6 {
     .gh-card-image{
         max-width: 400px;
     }
+
+    .gh-head-menu::before{
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        height: 0px;
+        content: "";
+        background-color: var(--color-light-gray);
+    }
+    
+    .gh-head-menu::after {
+        position: absolute;
+        top: 155px;
+        left: 0;
+        width: 100%;
+        height: 0px;
+        content: "";
+        background-color: var(--color-light-gray);
+    }
 }
 
 /* media query if under 720 */
