@@ -48,7 +48,8 @@
 .team {
     display: grid;
     gap: 32px 40px;
-    grid-template-columns: 1fr 1fr 1fr !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
 }
 
 .gh-card-link-team{
@@ -144,11 +145,11 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid var(--color-light-gray);
     border-radius: 0;
     box-shadow: none;
-    margin-bottom: 2rem;
 }
 
 .gh-card-wrapper {
     padding: 1rem;
+    overflow-wrap: anywhere;
 }
 
 .gh-article-image img {
