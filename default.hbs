@@ -123,7 +123,9 @@
             case "Work":
                 replacement = 
                 "<div class='meta'><img src='{{ asset 'images/map-pin-2-line.png' }}' alt=''><span class='meta-value'>" + value + "</span></div>";
-            default:
+            case "Expertise":
+                replacement = 
+                "<div class='meta'><img src='{{ asset 'images/briefcase-4-fill.png' }}' alt=''><span class='meta-value'>" + value + "</span></div>";
                 break;
         }
         return replacement;
